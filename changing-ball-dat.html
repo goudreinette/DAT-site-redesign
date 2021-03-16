@@ -1,0 +1,192 @@
+<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+<script src="https://unpkg.com/aframe-orbit-controls@1.3.0/dist/aframe-orbit-controls.min.js"></script>
+
+<div class="cursor">
+	DAT
+</div>
+
+<header>
+  <a href="/">
+    <a-assets>
+	  <img id="img-1" src="assets/1.png">
+	  <img id="img-2" src="assets/2.jpg">
+	  <img id="img-3" src="assets/3.jpg">
+	  <img id="img-4" src="assets/4.jpg">
+	  <img id="img-5" src="assets/5.jpg">
+	</a-assets>
+	<a-scene vr-mode-ui="enabled: false" embedded>
+		<a-sphere 
+		  position="0 0 0" 
+		  radius="1.25" 
+		  material="opacity: 0.8; transparent: true; src: #img-1"
+		></a-sphere>
+		<a-entity
+		  camera
+		  look-controls
+		  orbit-controls="target: 0 0 0; minDistance: 2; maxDistance: 2; initialPosition: 0 1 2; autoRotate: true; autoRotateSpeed: .05"
+		></a-entity>
+  	</a-scene>
+  </a>
+</header>
+
+<main>
+	<div class="grid">
+		<!-- <div class="box" style="background: #717171"></div>
+		<div class="box" style="background: #80ff00"></div>
+		<div class="box" style="background: #ff0000"></div>
+		<div class="box" style="background: #00eeff"></div>
+		<div class="box" style="background: #717171"></div>
+		<div class="box" style="background: #80ff00"></div>
+		<div class="box" style="background: #ff0000"></div>
+		<div class="box" style="background: #00eeff"></div>
+		<div class="box" style="background: #717171"></div>
+		<div class="box" style="background: #80ff00"></div>
+		<div class="box" style="background: #ff0000"></div>
+		<div class="box" style="background: #00eeff"></div>
+		<div class="box" style="background: #717171"></div>
+		<div class="box" style="background: #80ff00"></div>
+		<div class="box" style="background: #ff0000"></div>
+		<div class="box" style="background: #00eeff"></div> -->
+		<div class="box" data-i="1" style="background: url(assets/1.png)"></div>
+		<div class="box" data-i="2" style="background: url(assets/2.jpg)"></div>
+		<div class="box" data-i="3" style="background: url(assets/3.jpg)"></div>
+		<div class="box" data-i="4" style="background: url(assets/4.jpg)"></div>
+		<div class="box" data-i="5" style="background: url(assets/5.jpg)"></div>
+		<div class="box" data-i="1" style="background: url(assets/1.png)"></div>
+		<div class="box" data-i="2" style="background: url(assets/2.jpg)"></div>
+		<div class="box" data-i="3" style="background: url(assets/3.jpg)"></div>
+		<div class="box" data-i="4" style="background: url(assets/4.jpg)"></div>
+		<div class="box" data-i="5" style="background: url(assets/5.jpg)"></div>
+		<div class="box" data-i="1" style="background: url(assets/1.png)"></div>
+		<div class="box" data-i="2" style="background: url(assets/2.jpg)"></div>
+		<div class="box" data-i="3" style="background: url(assets/3.jpg)"></div>
+		<div class="box" data-i="4" style="background: url(assets/4.jpg)"></div>
+		<div class="box" data-i="5" style="background: url(assets/5.jpg)"></div>
+		<div class="box" data-i="1" style="background: url(assets/1.png)"></div>
+		<div class="box" data-i="2" style="background: url(assets/2.jpg)"></div>
+		<div class="box" data-i="3" style="background: url(assets/3.jpg)"></div>
+		<div class="box" data-i="4" style="background: url(assets/4.jpg)"></div>
+		<div class="box" data-i="5" style="background: url(assets/5.jpg)"></div>
+		<div class="box" data-i="1" style="background: url(assets/1.png)"></div>
+		<div class="box" data-i="2" style="background: url(assets/2.jpg)"></div>
+		<div class="box" data-i="3" style="background: url(assets/3.jpg)"></div>
+		<div class="box" data-i="4" style="background: url(assets/4.jpg)"></div>
+		<div class="box" data-i="5" style="background: url(assets/5.jpg)"></div>
+		<div class="box" data-i="1" style="background: url(assets/1.png)"></div>
+		<div class="box" data-i="2" style="background: url(assets/2.jpg)"></div>
+		<div class="box" data-i="3" style="background: url(assets/3.jpg)"></div>
+		<div class="box" data-i="4" style="background: url(assets/4.jpg)"></div>
+		<div class="box" data-i="5" style="background: url(assets/5.jpg)"></div>
+	</div>
+</main>
+
+<style>
+  body {
+    height: 200vh;
+	font-family: system-ui;
+  }
+  
+  a-scene {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+	/* filter: blur(2px); */
+	z-index: 2;
+	opacity: 1;
+	animation: pulse 2s infinite alternate;
+  }
+  
+  @keyframes pulse {
+	  from {
+		  opacity: 1;
+	  }
+	  
+	  to {
+		  opacity: .9;
+		  transform: scale(1.05);
+		  
+	  }
+  }
+  
+  .cursor {
+		position: fixed;
+		pointer-events: none;
+		mix-blend-mode: difference;
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		background-color: color(srgb 1 1 1);
+		transition: transform 350ms ease;
+		transform: translate(-50%, -50%);
+		transform-origin: top left;
+		z-index: 1000;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-weight: bold;
+		font-size: 150%;
+		letter-spacing: 2px;
+		/* filter: blur(20px); */
+  }
+  
+  body:not(.hovering) .cursor {
+	  transform: scale(0);
+  }
+  
+  header {
+  }
+  
+  main {
+	  max-width: 1000px;
+	  padding: 20px;
+	  margin: auto;
+	  padding-top: 50vh;
+  }
+  
+  .grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 20px;
+  }
+  
+  .box {
+	height: 500px;
+	opacity: .5;
+	cursor: none;
+	background-size: cover !important;
+	background-position: center !important;
+  }
+  
+  .box:hover {
+	  opacity: .85;
+	}
+</style>
+
+
+<script>
+	const sphere = document.querySelector('a-sphere')
+	const cursor = document.querySelector('.cursor')
+	
+	for (const box of document.querySelectorAll('.box')) {
+		box.onmouseenter = _ => {
+			// sphere.setAttribute('color', box.style.backgroundColor)
+			console.log(box.style.background)
+			sphere.setAttribute('material', 
+				`opacity: 0.8; transparent: true; src: #img-${box.dataset.i}`)
+			document.body.classList.add('hovering')
+		}
+		
+		box.onmouseleave = _ => {
+			document.body.classList.remove('hovering')
+		}
+	}
+	
+	
+	window.onmousemove = e => {
+		cursor.setAttribute('style', `
+			left: ${e.clientX};
+			top: ${e.clientY};
+		`)
+	}
+
+</script>

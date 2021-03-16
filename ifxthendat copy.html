@@ -1,0 +1,107 @@
+<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
+<header>
+  <div class="tagline">
+	if <span>this</span> then <br> <span style="font-size: 200%; color: inherit">DAT</span>
+  </div>
+</header>
+
+
+<main>
+	<div class="grid">
+		<div class="box" data-color="#be4064" data-word="random" style="background: url(assets/1.png)"></div>
+		<div class="box" data-color="#645eae" data-word="solar" style="background: url(assets/2.jpg)"></div>
+		<div class="box" data-color="#2b4dc9" data-word="ai" style="background: url(assets/3.jpg)"></div>
+		<div class="box" data-color="#533d61" data-word="blog" style="background: url(assets/4.jpg)"></div>
+		<div class="box" data-color="#7c3d4a" data-word="sjef" style="background: url(assets/5.jpg)"></div>
+	</div>
+</main>
+
+<style>
+  body {
+    height: 200vh;
+	font-family: system-ui;
+    margin: auto;
+	color: #242b30;
+  }
+  
+  .tagline, main {
+	  max-width: 1000px;
+	  margin: auto;
+	  
+	  padding: 20px;
+
+  }
+  
+  header {
+	position: sticky;
+	top: 0;
+	padding-top: 10px;
+	margin-top: 50px !important;
+	background: color(srgb 1 1 1 / 0.844);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	border-bottom: 1px solid white;
+	z-index: 2;
+  }
+  
+  .tagline {
+	  font-weight: bold;
+	  text-transform: uppercase;
+	  font-size: 150%;
+  }
+  
+  .tagline span  {
+	  color: rgba(0,0,0,0.4);
+  }
+  
+  main {
+  	padding-top: 20vh;
+  }
+  
+  .grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 20px;
+  }
+  
+  .box {
+	height: 500px;
+	opacity: .85;
+	background-size: cover !important;
+	cursor: pointer;
+	background-position: center !important;
+	transition: all .1s;
+  }
+  
+  
+  body.hovering .box {
+	  opacity: .5;
+  }
+  
+  .box:hover {
+	  opacity: 1 !important;
+	  transition: all .0s;
+
+	}
+</style>
+
+
+<script>
+	const word = document.querySelector('.tagline span')
+	
+	for (const box of document.querySelectorAll('.box')) {
+		box.onmouseenter = _ => {
+			document.body.classList.add('hovering')
+			word.innerText = box.dataset.word
+			word.style.color = box.dataset.color
+		}
+		
+		box.onmouseleave = _ => {
+			document.body.classList.remove('hovering')
+			word.innerText = "this"
+			word.style.color = "rgba(0,0,0,0.4)"
+		}
+	}
+
+</script>
