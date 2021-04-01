@@ -1,21 +1,78 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
-html {
-	background: hsla(144 35% 91% / 100%);
+
+@font-face  {
+	font-family: 'Neue Machina';
+	src: url('./assets/NeueMachina-Regular.otf');
 }
+
+@font-face  {
+	font-family: 'Neue Machina';
+	src: url('./assets/NeueMachina-Ultrabold.otf');
+	font-weight: bold;
+}
+
+@font-face  {
+	font-family: 'Formular';
+	src: url('./assets/Formular.ttf');
+}
+
+@font-face  {
+	font-family: 'Formular';
+	src: url('./assets/Formular-Bold.ttf');
+	font-weight: bold;
+}
+
+
+select#font-chooser {
+	background: transparent;
+	border: transparent;
+	opacity: .5;
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	display: none;
+}
+
+select#font-chooser:hover {
+	opacity: 1;
+}
+
+html {
+	background: #39ff13;
+	font-family: 'Formular';
+	overflow-x: hidden;
+}
+
+
 body {
-	/* font-family: "Noto Sans"; */
-	font-family: system-ui, sans-serif;
-	background: hsla(220, 35%, 91%, 1);
-	color: hsla(240, 14%, 17%, 1);
+	background: hsla(290.3, 100%, 95%, 1);
+	--color: hsla(240, 14%, 17%, 1);
+	color: var(--color);
 	margin: 0;
-	padding: 15px;
+	/* padding: 5vw; */
+	width: 100vw;
+	overflow-x: hidden;
 	padding-top: 50px;
 }
 
+::selection {
+	background: hsla(144 0% 0% / 10%);
+}
+
+#intro {
+	/* font-size: 150%; */
+	display: grid; grid-template-columns: 50% 50%; grid-gap: 25px;
+}
+
 header {
-	margin-top: 30vh;
-	margin-bottom: 15vh;
+	/* margin-top: 30vh; */
+	/* margin-bottom: 10vh; */
+	/* font-size: 400%; */
+}
+
+header img {
+	/* position: fixed; */
 }
 
 .blob-bg {
@@ -24,9 +81,11 @@ header {
 	position: fixed;
 	background-size: contain;
 	z-index: 1;
+	pointer-events: none;
 	opacity: 0.3;
 	background-repeat: no-repeat;
 	mix-blend-mode: darken;
+	display: none;
 }
 
 #fade-container {
@@ -36,10 +95,17 @@ header {
 h1 {
 	margin-top: 5px;
 	line-height: 1;
+	font-size: 3000%;
+	word-break: break-all;
+	margin-bottom: 0;
 }
+
+
+
 
 h2 {
 	margin-top: 30px;
+	display: none;
 }
 
 h3 {
@@ -48,24 +114,47 @@ h3 {
 
 h4 {
 	margin-top: 0px;
-	margin-bottom: 5px;
+	margin-bottom: 15px;
+	text-transform: uppercase;
+	font-size: 125%;
+
+}
+
+.lead {
+	font-size: 125%;
 }
 
 #projects img {
-	max-width: 100%;
+	width: 100%;
 	margin-bottom: 10px;
 }
 
 main {
-	max-width: 1000px;
-	margin: auto;
 	margin-bottom: 100px;
+}
+
+.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h2 {
+	max-width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 p {
 	line-height: 1.5;
 	max-width: 600px;
 	margin-top: 0;
+}
+
+h4 i {
+	font-size: 300%;
+	font-style: normal;
+	display: block;	
+	line-height: 1;
 }
 
 /* #projects .grid {
@@ -75,12 +164,12 @@ p {
 } */
 
 #projects article {
-	border-top: 1px solid hsla(240, 14%, 17%, 0.204);
+	/* border-top: 1px solid hsla(240, 14%, 17%, 0.204); */
 	display: grid;
-	grid-gap: 20px;
+	grid-gap: calc(2vw + 2vh);
 	grid-template-columns: repeat(2, 1fr);
-	padding-top: 40px;
-	padding-bottom: 40px;
+	padding-top: 20px;
+	padding-bottom: 10vh;
 }
 
 a {
@@ -94,7 +183,12 @@ a:hover {
 }
 
 details {
-	margin-top: 20px;
+	/* margin-top: 3vh; */
+}
+
+.details-wrapper {
+	/* margin-top: 20px; */
+	margin-bottom: 10px;
 }
 
 /* details:not([open]) .content * {
@@ -113,8 +207,7 @@ details summary {
 }
 
 details .content {
-	border-bottom: 1px solid hsla(240, 14%, 17%, 0.304);
-
+	/* border-bottom: 1px solid hsla(240, 14%, 17%, 0.304); */
 	width: max-content;
 	max-width: 100%;
 	transition: color 3s !important;
@@ -138,6 +231,10 @@ details .content {
 }
 
 @media (max-width: 800px) {
+	header img.desktop {
+		display: none;
+	}
+	
 	#projects article {
 		grid-template-columns: 1fr !important;
 	}
@@ -145,4 +242,68 @@ details .content {
 	#projects article * {
 		grid-column: 1 !important;
 	}
+	
+	.padding-left {
+		padding-left: calc(10px + 2vw);
+		padding-right: calc(10px + 2vw);
+	}
+	
+	.padding-right {
+		padding-right: calc(10px + 2vw);
+		padding-left: calc(10px + 2vw);
+	}
+	
+	h4 i {
+		font-size: 200%;
+	}
+	
+	h1 span {
+		display: block;
+	}
+	
+	#intro {
+		font-size: 100%;
+		grid-template-columns: 100%;
+	}
 }
+
+@media (min-width: 800px) {
+	header img.mobile {
+		display: none;
+	}
+	
+	.padding-left {
+		padding-left: 2vw;
+	}
+	
+	.padding-right {
+		padding-right: 2vw;
+	}
+	
+	.details-wrapper {
+		padding-right: 2vw;
+	}
+}
+
+@media (max-width: 450px) {
+	h1 {
+		font-size: 300%;
+	}
+}
+
+.buttons {
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+
+
+.buttons a {
+	background: hsla(240, 14%, 17%, 1);
+	text-transform: uppercase;
+	color: white;
+	padding: 10px 20px;
+	text-decoration: none;
+}
+
+
+
