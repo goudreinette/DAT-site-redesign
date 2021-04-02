@@ -301,55 +301,34 @@
 	const fadeContainer = document.querySelector('#fade-container');
 	const headers = document.querySelectorAll('header img');
 
+
 	addEventListener('scroll', () => {
-		let scrollTop = window.scrollY;
 		let docHeight = document.body.offsetHeight;
-		let winHeight = window.innerHeight;
-		let scrollPercent = scrollTop / (docHeight - winHeight);
+		let winHeight = innerHeight;
+		let scrollPercent = scrollY / (docHeight - winHeight);
 
 		let fadeIntro = Math.min(Math.min(scrollPercent, 0.05) * 20 + 0.5, 1);
 
 		console.log(scrollPercent, fadeIntro);
 
 		fadeContainer.style.opacity = fadeIntro;
-		// blobBg.style.opacity = Math.max(0.8 - fadeIntro, 0.05);
 		document.body.setAttribute('style', `background-color: hsla(290.3, 100%, 95%, ${1 - scrollPercent});`);
 		
 		headers.forEach(h => {
-			h.style.transform = `translateX(${-scrollTop}px)`
+			h.style.transform = `translateX(${-scrollY}px)`
 			h.style.opacity = 1.5 - fadeIntro;
 		})
 	});
 	
-	
-	// function changeFont(select) {
-	// 	document.querySelector('html').setAttribute('style', `font-family: ${select.value} !important`)
-	// 	localStorage.setItem('font', select.value)
-	// }
-	// 
-	// 
-	// const lastFont = localStorage.getItem('font') || 'Formular'
-	// 
-	// document.querySelector('html').setAttribute('style', `font-family: ${lastFont} !important`)
-	// 
-	// 
-	// for (const option of document.querySelectorAll('select option')) {
-	// 	if (option.innerText == lastFont) {
-	// 		option.selected = true
-	// 	}
-	// }
-	
+
 	
 	for (const article of document.querySelectorAll('article')) {
 		article.setAttribute('data-aos', 'fade-up')
 	}
 
+
 	AOS.init();
-	
-	document.querySelectorAll('h1').forEach(h1 => {
-		
-	})
-	
+
 
 </script>
 
