@@ -298,11 +298,14 @@ details .content {
 
 
 .buttons a {
+	display: inline-block;
 	background: hsla(240, 14%, 17%, 1);
 	text-transform: uppercase;
 	color: white;
 	padding: 10px 20px;
 	text-decoration: none;
+	
+	margin-bottom: 10px;
 }
 
 

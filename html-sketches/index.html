@@ -38,8 +38,8 @@
 					<p>Within the department, students develop their projects at the cross roads of Design Art and Technology. Below are some examples of student work. While some works more clearly fit one of the three fields, design art and technology are in fact always part of every project.</p>
 					
 					<div class="buttons">
-						<a target="_blank" href="https://www.artez.nl/en/course/design-art-technology">view on ArtEZ site</a>
-						<a target="_blank" href="https://www.artez.nl/en/study-at-artez/application-and-admission/apply">Apply</a>
+						<a target="_blank" href="https://www.artez.nl/en/course/design-art-technology">visit DAT on the ArtEZ website</a>
+						<a target="_blank" href="https://www.artez.nl/en/study-at-artez/application-and-admission/apply">Apply now</a>
 					</div>
 				</div>
 	
@@ -322,22 +322,22 @@
 	});
 	
 	
-	function changeFont(select) {
-		document.querySelector('html').setAttribute('style', `font-family: ${select.value} !important`)
-		localStorage.setItem('font', select.value)
-	}
-	
-	
-	const lastFont = localStorage.getItem('font') || 'Formular'
-	
-	document.querySelector('html').setAttribute('style', `font-family: ${lastFont} !important`)
-	
-	
-	for (const option of document.querySelectorAll('select option')) {
-		if (option.innerText == lastFont) {
-			option.selected = true
-		}
-	}
+	// function changeFont(select) {
+	// 	document.querySelector('html').setAttribute('style', `font-family: ${select.value} !important`)
+	// 	localStorage.setItem('font', select.value)
+	// }
+	// 
+	// 
+	// const lastFont = localStorage.getItem('font') || 'Formular'
+	// 
+	// document.querySelector('html').setAttribute('style', `font-family: ${lastFont} !important`)
+	// 
+	// 
+	// for (const option of document.querySelectorAll('select option')) {
+	// 	if (option.innerText == lastFont) {
+	// 		option.selected = true
+	// 	}
+	// }
 	
 	
 	for (const article of document.querySelectorAll('article')) {
