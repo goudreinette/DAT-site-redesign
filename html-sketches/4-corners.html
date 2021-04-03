@@ -1,17 +1,32 @@
 <nav>
-	<a style="transform-origin: top left; top: 0; left: 0;" href="">
+	<a class="top-left" style="transform-origin: top left; top: 0; left: 0;" href="">
 		LOGO
 	</a>
-	<a style="transform-origin: top right; top: 0; right: 0;" href="">
+	<a class="top-right" style="transform-origin: top right; top: 0; right: 0;" href="">
 		WHO
 	</a>
-	<a style="transform-origin: bottom left; bottom: 0; left: 0;" href="">
+	<a class="bottom-left" style="transform-origin: bottom left; bottom: 0; left: 0;" href="">
 		WHAT
 	</a>
-	<a style="transform-origin: bottom right; bottom: 0; right: 0;" href="">
+	<a class="bottom-right" style="transform-origin: bottom right; bottom: 0; right: 0;" href="">
 		WHEN
 	</a>
 </nav>
+
+
+<section class="intro">
+</section>
+
+<main>
+	<h1>Optic Deception</h1>
+	<p>Although video footage seems identical to how we perceive the world with our eyes, there is a big difference between human and technological perception. As human beings we need only 13 milliseconds to perceive an image. Cameras, on the other hand, record with a frame rate of 25 frames per second. Optic Deception is a project that shows the differences in perception between our eyes and the camera. Michelle van Ool designed a series of colour wheels that are driven by motors spinning at a speed of 75 rotations per second. At this specific speed, our naked eyes are not able to perceive any of the colours. The colours appear only when the wheels are viewed through a camera.</p>
+</main>
+
+<script>
+	addEventListener('scroll', () => {
+		document.body.classList.toggle('scrolled', scrollY > 50)		
+	})
+</script>
 
 
 <style>
@@ -29,6 +44,17 @@
 	body {
 		font-family: 'Formular';
 		margin: 0;
+		height: 200vh;
+	}
+	
+	section.intro {
+		background: #eee;
+		height: 100vh;
+	}
+	
+	main {
+		padding: calc(60px);
+		max-width: 1000px;
 	}
 	
 	nav {
@@ -36,12 +62,52 @@
 		height: 100vh;
 		pointer-events: none;
 		position: fixed;
+		
+		--scrolled-scale: .5;
+	}
+	
+	@media (max-width: 500px) {
+		nav {
+			--scrolled-scale: .4;
+		}
+		
+		main {
+			padding: 40px;
+		}
 	}
 	
 	nav a {
 		color: currentcolor;
 		position: absolute;
-		padding: 10px;
-		font-size: 200%;
+		padding: 0px 15px 10px 15px;
+		font-size: 400%;
+		transition: all .5s;
+		text-underline-offset: 6px;
+		pointer-events: all;
 	}
+	
+	nav a:hover {
+		text-decoration: none;
+	}
+	
+	body.scrolled nav a {
+	}
+	
+	body.scrolled nav a.bottom-left {
+		transform: scale(var(--scrolled-scale)) rotateZ(-90deg) translateY(100%);
+	}
+	
+	body.scrolled nav a.bottom-right {
+		transform: scale(var(--scrolled-scale)) rotateZ(-90deg) translateX(100%);
+	}
+	
+	body.scrolled nav a.top-left {
+		transform: scale(var(--scrolled-scale)) rotateZ(-90deg) translateX(-100%);
+	}
+	
+	body.scrolled nav a.top-right {
+		transform: scale(var(--scrolled-scale)) rotateZ(-90deg) translateY(-100%);
+	}
+	
+	
 </style>
