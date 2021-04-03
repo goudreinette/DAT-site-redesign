@@ -1,3 +1,6 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
 <nav>
 	<a class="top-left" style="transform-origin: top left; top: 0; left: 0;" href="">
 		LOGO
@@ -20,6 +23,11 @@
 <main>
 	<h1>Optic Deception</h1>
 	<p>Although video footage seems identical to how we perceive the world with our eyes, there is a big difference between human and technological perception. As human beings we need only 13 milliseconds to perceive an image. Cameras, on the other hand, record with a frame rate of 25 frames per second. Optic Deception is a project that shows the differences in perception between our eyes and the camera. Michelle van Ool designed a series of colour wheels that are driven by motors spinning at a speed of 75 rotations per second. At this specific speed, our naked eyes are not able to perceive any of the colours. The colours appear only when the wheels are viewed through a camera.</p>
+	
+	<h4>Florian van Zandwijk, <i>PHONY Toolkit</i> <br>Transition, 2017</h4>
+	<p>Social media urges us to constantly share how fantastic our lives are. Sharing stereotypical travel-images of far-away places has become an essential part of this. PHONY Toolkit is a smart phone clip-on that comes with an infinity pool and an airplane wing. With this toolkit Florian van Zandwijk allows you to escape the travel-pressure and fake perfect travel pictures without ever having to leave your home.</p>
+	
+	<p >0&deg;N 0&deg;E is a video installation that visualises the cyber-myth of the Null island: a fictional island imagined to float at the intersection of the prime meridian and the equator, at the 0&deg;, 0&deg; coordinates position. Deborah Mora noticed that the null value is also attributed to images, files and recordings that are uploaded online without a specific geo-position. By downloading and combining photographs, satellite pictures, 3D models and sound recordings with the 0,0 location, 0&deg;N 0&deg;E becomes an archive where all the lost objects come together in the form of a fictional island. Deborah created an immersive exploration of the visual and sonic landscape of this island, which evokes an otherworldly atmosphere where the natural and organic meet the electronic and artificial. In doing so, 0&deg;N 0&deg;E offers an experience of nature that exists in - and can only be accessed through - digital mediation.</p>
 </main>
 
 <script>
@@ -49,32 +57,31 @@
 	
 	section.intro {
 		background: #eee;
+		/*  url('./assets/clouds.png'); */		
+		background-size: cover;
+		image-rendering: pixelated;
 		height: 100vh;
 	}
 	
 	main {
 		padding: calc(60px);
-		max-width: 1000px;
+		max-width: 800px;
+		margin: auto;
 	}
 	
 	nav {
 		width: 100vw;
-		height: 100vh;
+		min-height: 100vh;
+		min-height: -webkit-fill-available;
+		
 		pointer-events: none;
 		position: fixed;
 		
 		--scrolled-scale: .5;
+		--scrolled-rotation: -90deg;
+		--scrolled-translation: 100%;
 	}
 	
-	@media (max-width: 500px) {
-		nav {
-			--scrolled-scale: .4;
-		}
-		
-		main {
-			padding: 40px;
-		}
-	}
 	
 	nav a {
 		color: currentcolor;
@@ -90,24 +97,43 @@
 		text-decoration: none;
 	}
 	
-	body.scrolled nav a {
-	}
 	
 	body.scrolled nav a.bottom-left {
-		transform: scale(var(--scrolled-scale)) rotateZ(-90deg) translateY(100%);
+		transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateY(var(--scrolled-translation));
 	}
 	
 	body.scrolled nav a.bottom-right {
-		transform: scale(var(--scrolled-scale)) rotateZ(-90deg) translateX(100%);
+		transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateX(var(--scrolled-translation));
 	}
 	
 	body.scrolled nav a.top-left {
-		transform: scale(var(--scrolled-scale)) rotateZ(-90deg) translateX(-100%);
+		transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateX(calc(-1 * var(--scrolled-translation)));
 	}
 	
 	body.scrolled nav a.top-right {
-		transform: scale(var(--scrolled-scale)) rotateZ(-90deg) translateY(-100%);
+		transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateY(calc(-1 * var(--scrolled-translation)));
 	}
 	
-	
+	/* Responsive */	
+	@media (max-width: 500px) {
+		nav {
+			/* --scrolled-scale: .4; */
+		}
+		
+		main {
+			padding: 40px;
+		}
+		
+		nav a {
+			font-size: 275%;
+		}
+	}
+	@media (min-width: 1050px) {
+		nav {
+			--scrolled-rotation: 0deg;
+			--scrolled-translation: 0%;
+		}
+		
+		
+	}
 </style>
