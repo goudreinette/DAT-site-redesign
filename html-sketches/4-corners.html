@@ -1,20 +1,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 
-<nav>
-	<a class="top-left" style="transform-origin: top left; top: 0; left: 0;" href="">
-		LOGO
-	</a>
-	<a class="top-right" style="transform-origin: top right; top: 0; right: 0;" href="">
-		WHO
-	</a>
-	<a class="bottom-left" style="transform-origin: bottom left; bottom: 0; left: 0;" href="">
-		WHAT
-	</a>
-	<a class="bottom-right" style="transform-origin: bottom right; bottom: 0; right: 0;" href="">
-		WHEN
-	</a>
-</nav>
+<script src="./elements.js"></script>
+
+<corners-menu></corners-menu>
 
 
 <section class="intro">
@@ -30,14 +19,12 @@
 	<p >0&deg;N 0&deg;E is a video installation that visualises the cyber-myth of the Null island: a fictional island imagined to float at the intersection of the prime meridian and the equator, at the 0&deg;, 0&deg; coordinates position. Deborah Mora noticed that the null value is also attributed to images, files and recordings that are uploaded online without a specific geo-position. By downloading and combining photographs, satellite pictures, 3D models and sound recordings with the 0,0 location, 0&deg;N 0&deg;E becomes an archive where all the lost objects come together in the form of a fictional island. Deborah created an immersive exploration of the visual and sonic landscape of this island, which evokes an otherworldly atmosphere where the natural and organic meet the electronic and artificial. In doing so, 0&deg;N 0&deg;E offers an experience of nature that exists in - and can only be accessed through - digital mediation.</p>
 </main>
 
-<script>
-	addEventListener('scroll', () => {
-		document.body.classList.toggle('scrolled', scrollY > 50)		
-	})
-</script>
-
 
 <style>
+	corners-menu {
+		width: 100vw;
+	}
+	
 	@font-face  {
 		font-family: 'Formular';
 		src: url('./assets/Formular.ttf');
@@ -69,71 +56,5 @@
 		margin: auto;
 	}
 	
-	nav {
-		width: 100vw;
-		min-height: 100vh;
-		min-height: -webkit-fill-available;
-		
-		pointer-events: none;
-		position: fixed;
-		
-		--scrolled-scale: .5;
-		--scrolled-rotation: -90deg;
-		--scrolled-translation: 100%;
-	}
 	
-	
-	nav a {
-		color: currentcolor;
-		position: absolute;
-		padding: 0px 15px 10px 15px;
-		font-size: 400%;
-		transition: all .5s;
-		text-underline-offset: 6px;
-		pointer-events: all;
-	}
-	
-	nav a:hover {
-		text-decoration: none;
-	}
-	
-	
-	body.scrolled nav a.bottom-left {
-		transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateY(var(--scrolled-translation));
-	}
-	
-	body.scrolled nav a.bottom-right {
-		transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateX(var(--scrolled-translation));
-	}
-	
-	body.scrolled nav a.top-left {
-		transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateX(calc(-1 * var(--scrolled-translation)));
-	}
-	
-	body.scrolled nav a.top-right {
-		transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateY(calc(-1 * var(--scrolled-translation)));
-	}
-	
-	/* Responsive */	
-	@media (max-width: 500px) {
-		nav {
-			/* --scrolled-scale: .4; */
-		}
-		
-		main {
-			padding: 40px;
-		}
-		
-		nav a {
-			font-size: 275%;
-		}
-	}
-	@media (min-width: 1050px) {
-		nav {
-			--scrolled-rotation: 0deg;
-			--scrolled-translation: 0%;
-		}
-		
-		
-	}
 </style>

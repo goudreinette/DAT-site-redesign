@@ -1,0 +1,99 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="./elements.js"></script>
+
+<corners-menu></corners-menu>
+
+
+<svg style="width: 100vw; height: 100vh;">
+	<g></g>
+</svg>
+
+
+<script>
+const blobGroup = document.querySelector('svg g')
+
+const circleACenter = [Math.random() * 500, Math.random() * 500]
+const circleBCenter = [circleACenter[0] + Math.random() * 200, circleACenter[1] + Math.random() * 200]
+	
+let colors = {
+	'D': 'pink',
+	'A': '',
+	'T': ''
+}
+	
+
+for (let i = 0; i < 100; i++) {
+	let x = circleACenter[0] + Math.sin(i) * Math.random() * 200
+	let y = circleACenter[1] + Math.cos(i) * Math.random() * 200
+	let letter = sample(["D", "A", "T"])
+	let color = colors[letter]
+	
+	// svg.innerHTML += `
+	// 	<circle cx=${x} cy=${y} r="5" fill="pink"/>
+	// `
+	
+	blobGroup.innerHTML += `
+		<text x=${x} y=${y} r="5" fill="${color}" font-size="5em" font-weight="bold" transform="rotate(${Math.random() * 360}, ${x}, ${y})" text-anchor="middle"
+		dominant-baseline="central" style="z-index: -1">
+			${sample(["D", "A", "T"])}
+		</text>
+	`
+}
+
+for (let i = 0; i < 100; i++) {
+	let x = circleBCenter[0] + Math.sin(i) * Math.random() * 200
+	let y = circleBCenter[1] + Math.cos(i) * Math.random() * 200
+	let letter = sample(["D", "A", "T"])
+	let color = colors[letter]
+	
+	
+	blobGroup.innerHTML += `
+		<text x=${x} y=${y} r="5" fill="${color}" font-size="5em" font-weight="bold" transform="rotate(${Math.random() * 360}, ${x}, ${y})" text-anchor="middle"
+		dominant-baseline="central" style="z-index: 2">
+			${}
+		</text>
+	`
+}
+	
+	
+	
+function sample(array) {
+  var length = array.length;
+  return array[Math.floor(Math.random() * length)];
+}
+
+</script>
+
+
+
+
+<style>
+
+@font-face  {
+	font-family: 'Formular';
+	src: url('./assets/Formular.ttf');
+}
+
+@font-face  {
+	font-family: 'Formular';
+	src: url('./assets/Formular-Bold.ttf');
+	font-weight: bold;
+}
+
+body {
+	font-family: 'Formular';
+	margin: 0;
+	height: 200vh;
+}
+
+svg {
+	pointer-events: none;
+	position: fixed;
+}
+
+svg text {
+	position: relative;
+}
+</style>
+
+
