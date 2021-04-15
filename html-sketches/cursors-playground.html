@@ -1,0 +1,57 @@
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta charset="UTF-8">
+
+	<title>DAT</title>
+</head>
+
+
+<header>
+	<button class="prev" onclick="prevCursor(this)">prev</button>
+	<span class="i"></span>
+	<button class="next" onclick="nextCursor(this)">next</button>
+</header>
+
+
+<style>
+	body {
+		--cursor: url('./assets/cursors/Group 5.png') 0 0, pointer;
+	}
+
+	* {
+		cursor: var(--cursor);	
+	}
+	
+	button {
+		padding: 10px 20px;
+	}
+</style>
+
+
+<script>
+	let minI = 5
+	let maxI = 26
+	let i = localStorage.getItem('i') || minI;
+	
+	
+	function prevCursor(el) {
+		if (i > minI) i--;
+		updateCursor()
+	}
+	
+	function nextCursor(el) {
+		if (i < maxI) i++;
+		updateCursor()
+	}
+	
+	function updateCursor() {
+		document.body.style.setProperty('--cursor', `url('./assets/cursors/Group ${i}.png') 0 0, pointer`)
+		document.querySelector('button.prev').toggleAttribute('disabled', i <= minI)
+		document.querySelector('button.next').toggleAttribute('disabled', i >= maxI)
+		document.querySelector('.i').innerHTML = `${i} / ${maxI}`
+		
+		localStorage.setItem('i', i)
+	}
+	
+	updateCursor()
+</script>

@@ -39,16 +39,19 @@ select#font-chooser:hover {
 }
 
 html {
-	background: #39ff13;
 	font-family: 'Formular';
 	overflow-x: hidden;
 }
 
 
 body {
-	background: hsla(290.3, 100%, 95%, 1);
+	
 	--color: hsla(240, 14%, 17%, 1);
 	color: var(--color);
+	
+	--background-color: hsla(240, 14%, 17%, 1);
+	background-color: var(--background-color);
+	
 	margin: 0;
 	/* padding: 5vw; */
 	width: 100vw;
