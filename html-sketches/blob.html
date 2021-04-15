@@ -17,8 +17,8 @@ const circleBCenter = [circleACenter[0] + Math.random() * 200, circleACenter[1] 
 	
 let colors = {
 	'D': 'pink',
-	'A': '',
-	'T': ''
+	'A': '#FFB5C4',
+	'T': '#F6B4C1'
 }
 	
 
@@ -27,15 +27,12 @@ for (let i = 0; i < 100; i++) {
 	let y = circleACenter[1] + Math.cos(i) * Math.random() * 200
 	let letter = sample(["D", "A", "T"])
 	let color = colors[letter]
-	
-	// svg.innerHTML += `
-	// 	<circle cx=${x} cy=${y} r="5" fill="pink"/>
-	// `
+
 	
 	blobGroup.innerHTML += `
 		<text x=${x} y=${y} r="5" fill="${color}" font-size="5em" font-weight="bold" transform="rotate(${Math.random() * 360}, ${x}, ${y})" text-anchor="middle"
 		dominant-baseline="central" style="z-index: -1">
-			${sample(["D", "A", "T"])}
+			${letter}
 		</text>
 	`
 }
@@ -50,7 +47,7 @@ for (let i = 0; i < 100; i++) {
 	blobGroup.innerHTML += `
 		<text x=${x} y=${y} r="5" fill="${color}" font-size="5em" font-weight="bold" transform="rotate(${Math.random() * 360}, ${x}, ${y})" text-anchor="middle"
 		dominant-baseline="central" style="z-index: 2">
-			${}
+			${letter}
 		</text>
 	`
 }
