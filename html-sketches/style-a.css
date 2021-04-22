@@ -1,43 +1,3 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap'); */
-
-
-@font-face  {
-	font-family: 'Neue Machina';
-	src: url('./assets/NeueMachina-Regular.otf');
-}
-
-@font-face  {
-	font-family: 'Neue Machina';
-	src: url('./assets/NeueMachina-Ultrabold.otf');
-	font-weight: bold;
-}
-
-@font-face  {
-	font-family: 'Formular';
-	src: url('./assets/Formular.ttf');
-}
-
-@font-face  {
-	font-family: 'Formular';
-	src: url('./assets/Formular-Bold.ttf');
-	font-weight: bold;
-}
-
-
-select#font-chooser {
-	background: transparent;
-	border: transparent;
-	opacity: .5;
-	position: absolute;
-	top: 25px;
-	left: 25px;
-	display: none;
-}
-
-select#font-chooser:hover {
-	opacity: 1;
-}
-
 html {
 	font-family: 'Formular';
 	overflow-x: hidden;
@@ -50,7 +10,7 @@ corners-menu {
 }
 
 body {
-	--color: hsla(240, 14%, 17%, 1);
+	--color: black;
 	color: var(--color);
 	
 	--background-color: hsla(240, 14%, 17%, 1);

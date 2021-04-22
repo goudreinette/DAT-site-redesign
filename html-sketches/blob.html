@@ -1,5 +1,9 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<script src="./elements.js"></script>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./elements.js"></script>
+    <link rel="stylesheet" href="./common.css">
+</head>
+
 
 <corners-menu></corners-menu>
 
@@ -31,7 +35,7 @@ for (let i = 0; i < 100; i++) {
 	
 	blobGroup.innerHTML += `
 		<text x=${x} y=${y} r="5" fill="${color}" font-size="5em" font-weight="bold" transform="rotate(${Math.random() * 360}, ${x}, ${y})" text-anchor="middle"
-		dominant-baseline="central" style="z-index: -1">
+		dominant-baseline="central" style="animation-delay: ${i/10}s">
 			${letter}
 		</text>
 	`
@@ -46,7 +50,7 @@ for (let i = 0; i < 100; i++) {
 	
 	blobGroup.innerHTML += `
 		<text x=${x} y=${y} r="5" fill="${color}" font-size="5em" font-weight="bold" transform="rotate(${Math.random() * 360}, ${x}, ${y})" text-anchor="middle"
-		dominant-baseline="central" style="z-index: 2">
+		dominant-baseline="central" style="animation-delay: ${i/10}s">
 			${letter}
 		</text>
 	`
@@ -79,7 +83,6 @@ function sample(array) {
 
 body {
 	font-family: 'Formular';
-	margin: 0;
 	height: 200vh;
 }
 
@@ -90,6 +93,18 @@ svg {
 
 svg text {
 	position: relative;
+	animation: blob-in 1s;
+}
+
+
+@keyframes blob-in {
+	from {
+		transform: scale(0);
+	}
+	
+	to {
+		transform: scale(1);
+	}
 }
 </style>
 

@@ -1,5 +1,6 @@
 <head>
 	<link rel="stylesheet" href="./style-a.css" />
+	<link rel="stylesheet" href="./common.css">
 	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 	
 	<script src="https://colorjs.io/dist/color.js"></script>
@@ -11,7 +12,7 @@
 	<title>DAT</title>
 </head>
 
-<corners-menu></corners-menu>
+<!-- <corners-menu></corners-menu> -->
 
 <div class="blob-bg"></div>
 
@@ -317,8 +318,8 @@
 	const headers = document.querySelectorAll('header img');
 
 
-	const startkleur = new Color.default("hsla(290.3, 100%, 95%, 1)")
-	const eindkleur = new Color.default("#39ff13")
+	const startkleur = new Color.default("rgb(255, 234, 223)")
+	const eindkleur = new Color.default("rgb(204, 235, 236)")
 
 
 	addEventListener('scroll', updateScroll);
@@ -331,10 +332,7 @@
 
 		let fadeIntro = Math.min(Math.min(scrollPercent, 0.05) * 20 + 0.5, 1);
 
-		// console.log(scrollPercent, fadeIntro);
-
 		fadeContainer.style.opacity = fadeIntro;
-		document.body.setAttribute('style', `background-color: hsla(290.3, 100%, 95%, ${1 - scrollPercent});`);
 		
 		headers.forEach(h => {
 			h.style.transform = `translateX(${-scrollY}px)`

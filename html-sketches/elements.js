@@ -1,16 +1,16 @@
 const template = document.createElement('template');
 template.innerHTML = `
 <nav>
-	<a class="top-left" style="transform-origin: top left; top: 0; left: 0;" href="">
-		LOGO
+	<a href="/blob.html" class="top-left" style="transform-origin: top left; top: 0; left: 0;">
+		DAT
 	</a>
-	<a class="top-right" style="transform-origin: top right; top: 0; right: 0;" href="">
+	<a href="/who.html" class="top-right" style="transform-origin: top right; top: 0; right: 0;">
 		WHO
 	</a>
-	<a class="bottom-left" style="transform-origin: bottom left; bottom: 0; left: 0;" href="">
+	<a href="/what.html" class="bottom-left" style="transform-origin: bottom left; bottom: 0; left: 0;">
 		WHAT
 	</a>
-	<a class="bottom-right" style="transform-origin: bottom right; bottom: 0; right: 0;" href="">
+	<a href="/when.html" class="bottom-right" style="transform-origin: bottom right; bottom: 0; right: 0;">
 		WHEN
 	</a>
 </nav>
@@ -38,17 +38,26 @@ nav {
 	 font-size: 400%;
 	 transition: all .5s;
 	 text-underline-offset: 6px;
+	 text-decoration: none;
 	 pointer-events: all;
+ }
+
+ nav a.active {
+	 transform: scale(2);
  }
  
  nav a:hover {
 	 text-decoration: none;
  }
- 
+
+nav a.active {
+	padding: 0px 15px 0px 15px; 
+}
+
  
  nav.scrolled a.bottom-left {
 	 transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateY(var(--scrolled-translation));
- }
+}
  
  nav.scrolled a.bottom-right {
 	 transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateX(var(--scrolled-translation));
@@ -75,7 +84,22 @@ nav {
 	 nav a {
 		 font-size: 275%;
 	 }
+
+	 nav a.active {
+		transform: scale(1.5);
+	 }
  }
+
+
+ @media (max-width: 400px) {
+	nav a {
+		font-size: 200%;
+	}
+
+	nav a.active {
+		transform: scale(1.25);
+	}
+}
 </style>
 
 
@@ -84,14 +108,12 @@ nav {
 class CornersMenu extends HTMLElement {
 	constructor() {
 		super();
-		
-		const shadowRoot = this.attachShadow({mode: 'closed'});
-		// clone template content nodes to the shadow DOM
+		const shadowRoot = this.attachShadow({ mode: 'closed' });
 		shadowRoot.appendChild(template.content.cloneNode(true));
-		
-		
+		const activeMenuItem = shadowRoot.querySelector(`a[href="${location.pathname}"]`)
+		activeMenuItem.classList.add('active')
 		addEventListener('scroll', () => {
-			shadowRoot.querySelector('nav').classList.toggle('scrolled', scrollY > 50)		
+			shadowRoot.querySelector('nav').classList.toggle('scrolled', scrollY > 50)
 		})
 	}
 }
