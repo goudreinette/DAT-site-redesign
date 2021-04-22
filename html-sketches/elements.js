@@ -35,7 +35,7 @@ nav {
 	 color: currentcolor;
 	 position: absolute;
 	 padding: 0px 15px 10px 15px;
-	 font-size: 400%;
+	 font-size: 700%;
 	 transition: all .5s;
 	 text-underline-offset: 6px;
 	 text-decoration: none;
@@ -52,22 +52,23 @@ nav {
 
 nav a.active {
 	padding: 0px 15px 0px 15px; 
+	pointer-events: none;
 }
 
  
- nav.scrolled a.bottom-left {
+ nav.scrolled a.bottom-left:not(.active) {
 	 transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateY(var(--scrolled-translation));
 }
  
- nav.scrolled a.bottom-right {
+ nav.scrolled a.bottom-right:not(.active) {
 	 transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateX(var(--scrolled-translation));
  }
  
-  nav.scrolled a.top-left {
+  nav.scrolled a.top-left:not(.active) {
 	 transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateX(calc(-1 * var(--scrolled-translation)));
  }
  
-  nav.scrolled a.top-right {
+  nav.scrolled a.top-right:not(.active) {
 	 transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateY(calc(-1 * var(--scrolled-translation)));
  }
  

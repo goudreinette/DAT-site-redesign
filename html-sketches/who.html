@@ -6,3 +6,122 @@
 
 
 <corners-menu></corners-menu>
+
+
+<main>
+    <div class="grid">
+        <div class="column" style="grid-column: 2; --accent-color: var(--hermosa-pink)">
+            <h2>Students</h2>
+            <a href="">1st YEAR</a>
+            <a href="">2nd YEAR</a>
+            <a href="">3rd YEAR</a>
+            <a href="">4th YEAR</a>
+        </div>
+
+        <div class="column" style="grid-column: 4;  --accent-color: var(--calamine-blue)">
+            <h2>Alumni</h2>
+            <a href="">2020</a>
+            <a href="">2019</a>
+            <a href="">2018</a>
+            <a href="">2017</a>
+            <a href="">2016</a>
+            <a href="">2015</a>
+            <a href="">2014</a>
+            <a href="">2013</a>
+            <a href="">2012</a>
+        </div>
+
+        <div class="column" style="grid-column: 6 / span 7; --accent-color: var(--seashell-pink)">
+            <h2>Teachers</h2>
+            <a href=""></a>
+            <a href="">Amy Whittle</a>
+            <a href="">Anke van Loon</a>
+            <a href="">Annelou van Griensven</a>
+            <a href="">Bram Bogaerts</a>
+            <a href="">Bram de Groot</a>
+            <a href="">Casper Schipper</a>
+            <a href="">Daan van Dijk</a>
+            <a href="">Daniel Gross</a>
+            <a href="">Dasha Tsapenko</a>
+            <a href="">Doeke Wartena</a>
+            <a href="">Frank Kolkman</a>
+            <a href="">Jan Robert Leegte</a>
+            <a href="">Jeroen Barendse</a>
+            <a href="">Juha van t Zelfde</a>
+            <a href="">Leanne Wijnsma</a>
+            <a href="">Magda Saarloos</a>
+            <a href="">Marijke Goeting</a>
+            <a href="">Martijn van Boven</a>
+            <a href="">Mike Rijnierse</a>
+            <a href="">Natalia Dominguez Rangel</a>
+            <a href="">Rolf Schoeber</a>
+            <a href="">Willem van Weelden</a>
+        </div>
+    </div>
+</main>
+
+
+
+<style>
+    main {
+        padding-top: 30vh;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(14, 1fr);
+        grid-gap: 20px;
+        width: 100vw;
+    }
+
+    /* .column {
+        background: cyan;
+        min-height: 200vh;
+        width: 1fr;
+    } */
+
+    .img-placeholder {
+        background: #ddd;
+        height: 200px;
+    }
+
+    h2 {
+        grid-column: 3 / 12;
+        margin-bottom: 0;
+        font-weight: normal;
+    }
+
+    p {
+        grid-column: 2 / 8;
+        margin-top: 0;
+    }
+
+    .column a {
+        display: block;
+    }
+
+    details {
+        display: contents;
+    }
+
+    details summary {
+        grid-column: 3 / 10;
+        font-weight: bold;
+        font-size: 24;
+        cursor: pointer;
+        user-select: none;
+        text-decoration: underline;
+        text-decoration-color: #00000026;
+    }
+
+    details .content {
+        grid-column: 4 / 11;
+    }
+
+    @media (max-width: 768px) {}
+
+    .column a {
+        text-decoration-color: var(--accent-color);
+        line-height: 2;
+    }
+</style>

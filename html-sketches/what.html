@@ -22,28 +22,75 @@
         <div class="column"></div>
         <div class="column"></div> -->
 
-        <h2>Design Art & Technology</h2>
-        <div class="img-placeholder" style="grid-column: 1 / span 3;"></div>
-        <p style="grid-column: 4 / 10;">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus cumque ex quam totam culpa quasi, dolore
-            molestiae architecto quibusdam neque nihil voluptatem laborum nesciunt vel id perferendis, ipsa eligendi.
-            Dolore?
-        </p>
+        <details>
+            <summary>Design Art & Technology</summary>
+            <div class="img-placeholder" style="grid-column: 1 / span 3"></div>
 
-        <h2>Praktijk</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam quisquam, odit ea a obcaecati harum tempore
-            delectus. Laborum nisi delectus nostrum officia, at blanditiis consequuntur perspiciatis veniam adipisci
-            commodi
-            sunt.
-        </p>
+            <div class="content" style="grid-column: 4 / span 8;">
+                <p>Design Art Technology students learn to shape our technological world in an innovative and artistic
+                    way, and use technology for their own artistic expression. By experimenting with new techniques,
+                    investigating how our perception changes, and exploring the problems and possibilities of our
+                    digital culture, they respond to current questions from society. The program invites students to ask
+                    critical questions - sometimes questions that have not been asked before - and to make people think
+                    through their work. As a result, they actively contribute to new creative visions of the future.</p>
 
-        <h2>Theorie per jaar</h2>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste repellendus officiis esse non quae, ea harum
-            quas
-            quia est sint, necessitatibus dolores magnam maxime nesciunt fugit quos. Quis, delectus doloribus.
-        </p>
+                <p>Design Art Technology trains a wide spectrum of makers; from designers to autonomous artists. The
+                    program focusses on learning to deal with the complexity of our media-technological landscape - in a
+                    technical, aesthetic, sociocultural and political sense. As designers and artists, the students of
+                    Design Art Technology know how to convert this complexity into critical reflections on, new
+                    imaginations of and alternative applications for technological media. They design interactive
+                    systems that can take many forms: from websites, videos, (data) visualisations, apps, games and
+                    wearables to virtual worlds, machines, instruments and interactive installations. Design Art
+                    Technology is therefore a unique study program that challenges its students to shape our new world.
+                </p>
+            </div>
+        </details>
+
+
+
+        <details>
+            <summary>Praktijk</summary>
+            <div class="content">
+                <p>Design Art Technology students learn to shape our technological world in an innovative and artistic
+                    way, and use technology for their own artistic expression. By experimenting with new techniques,
+                    investigating how our perception changes, and exploring the problems and possibilities of our
+                    digital culture, they respond to current questions from society. The program invites students to ask
+                    critical questions - sometimes questions that have not been asked before - and to make people think
+                    through their work. As a result, they actively contribute to new creative visions of the future.</p>
+
+                <p>Design Art Technology trains a wide spectrum of makers; from designers to autonomous artists. The
+                    program focusses on learning to deal with the complexity of our media-technological landscape - in a
+                    technical, aesthetic, sociocultural and political sense. As designers and artists, the students of
+                    Design Art Technology know how to convert this complexity into critical reflections on, new
+                    imaginations of and alternative applications for technological media. They design interactive
+                    systems that can take many forms: from websites, videos, (data) visualisations, apps, games and
+                    wearables to virtual worlds, machines, instruments and interactive installations. Design Art
+                    Technology is therefore a unique study program that challenges its students to shape our new world.
+                </p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Theorie per jaar</summary>
+            <div class="content">
+                <p>Design Art Technology students learn to shape our technological world in an innovative and artistic
+                    way, and use technology for their own artistic expression. By experimenting with new techniques,
+                    investigating how our perception changes, and exploring the problems and possibilities of our
+                    digital culture, they respond to current questions from society. The program invites students to ask
+                    critical questions - sometimes questions that have not been asked before - and to make people think
+                    through their work. As a result, they actively contribute to new creative visions of the future.</p>
+
+                <p>Design Art Technology trains a wide spectrum of makers; from designers to autonomous artists. The
+                    program focusses on learning to deal with the complexity of our media-technological landscape - in a
+                    technical, aesthetic, sociocultural and political sense. As designers and artists, the students of
+                    Design Art Technology know how to convert this complexity into critical reflections on, new
+                    imaginations of and alternative applications for technological media. They design interactive
+                    systems that can take many forms: from websites, videos, (data) visualisations, apps, games and
+                    wearables to virtual worlds, machines, instruments and interactive installations. Design Art
+                    Technology is therefore a unique study program that challenges its students to shape our new world.
+                </p>
+            </div>
+        </details>
     </div>
 </main>
 
@@ -80,6 +127,24 @@
     p {
         grid-column: 2 / 8;
         margin-top: 0;
+    }
+
+    details {
+        display: contents;
+    }
+
+    details summary {
+        grid-column: 3 / 10;
+        font-weight: bold;
+        font-size: 24;
+        cursor: pointer;
+        user-select: none;
+        text-decoration: underline;
+        text-decoration-color: #00000026;
+    }
+
+    details .content {
+        grid-column: 4 / 11;
     }
 
     @media (max-width: 768px) {}
