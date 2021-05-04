@@ -1,3 +1,7 @@
+function html(string) {
+	return string
+}
+
 class CornersMenu extends HTMLElement {
 	constructor() {
 		super();
@@ -10,7 +14,7 @@ class CornersMenu extends HTMLElement {
 	connectedCallback() {
 		this.innerHTML = html`
 			<nav>
-				<a href="/dat.html" class="top-left" style="transform-origin: top left; top: 0; left: 0;">
+				<a href="/home-new.html" class="top-left" style="transform-origin: top left; top: 0; left: 0;">
 					DAT
 				</a>
 				<a href="/who.html" class="top-right" style="transform-origin: top right; top: 0; right: 0;">
@@ -44,7 +48,7 @@ class CornersMenu extends HTMLElement {
 				color: currentcolor;
 				position: absolute;
 				padding: 0px 15px 10px 15px;
-				font-size: 700%;
+				font-size: 600%;
 				transition: all .5s;
 				text-underline-offset: 6px;
 				text-decoration: none;
@@ -52,7 +56,7 @@ class CornersMenu extends HTMLElement {
 			}
 			
 			nav a.active {
-				transform: scale(2);
+				transform: scale(1);
 			}
 			
 			nav a:hover {
@@ -64,24 +68,41 @@ class CornersMenu extends HTMLElement {
 				pointer-events: none;
 			}
 			
-			
-			nav.scrolled a.bottom-left:not(.active) {
+			nav.scrolled a.bottom-left {
 				transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateY(var(--scrolled-translation));
 			}
 			
-			nav.scrolled a.bottom-right:not(.active) {
+			nav.scrolled a.bottom-right {
 				transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateX(var(--scrolled-translation));
 			}
 			
-			nav.scrolled a.top-left:not(.active) {
+			nav.scrolled a.top-left {
 				transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateX(calc(-1 * var(--scrolled-translation)));
 			}
 			
-			nav.scrolled a.top-right:not(.active) {
+			nav.scrolled a.top-right {
 				transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateY(calc(-1 * var(--scrolled-translation)));
 			}
 			
 			/* Responsive */	
+			@media (max-width: 700px) {
+				nav a {
+					font-size: 500%;
+				}
+			}
+
+			@media (max-width: 600px) {
+				nav a {
+					font-size: 400%;
+				}
+			}
+
+			@media (max-width: 600px) {
+				nav a {
+					font-size: 350%;
+				}
+			}
+
 			@media (max-width: 500px) {
 				main {
 					padding: 40px;
@@ -90,20 +111,12 @@ class CornersMenu extends HTMLElement {
 				nav a {
 					font-size: 275%;
 				}
-			
-				nav a.active {
-					transform: scale(1.5);
-				}
 			}
 			
 			
 			@media (max-width: 400px) {
 				nav a {
 					font-size: 200%;
-				}
-			
-				nav a.active {
-					transform: scale(1.25);
 				}
 			}
 			</style>
