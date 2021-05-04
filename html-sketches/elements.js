@@ -2,6 +2,10 @@ function html(string) {
 	return string
 }
 
+
+/**
+ * 
+ */
 class CornersMenu extends HTMLElement {
 	constructor() {
 		super();
@@ -16,14 +20,34 @@ class CornersMenu extends HTMLElement {
 			<nav>
 				<a href="/home-new.html" class="top-left" style="transform-origin: top left; top: 0; left: 0;">
 					DAT
+					<ul class="subs">
+						<li>One</li>
+						<li>Two</li>
+						<li>Three</li>
+					</ul>
 				</a>
 				<a href="/who.html" class="top-right" style="transform-origin: top right; top: 0; right: 0;">
 					WHO
+					<ul class="subs">
+						<li>One</li>
+						<li>Two</li>
+						<li>Three</li>
+					</ul>
 				</a>
 				<a href="/what.html" class="bottom-left" style="transform-origin: bottom left; bottom: 0; left: 0;">
+					<ul class="subs">
+						<li>One</li>
+						<li>Two</li>
+						<li>Three</li>
+					</ul>
 					WHAT
 				</a>
 				<a href="/when.html" class="bottom-right" style="transform-origin: bottom right; bottom: 0; right: 0;">
+					<ul class="subs">
+						<li>One</li>
+						<li>Two</li>
+						<li>Three</li>
+					</ul>
 					WHEN
 				</a>
 			</nav>
@@ -37,6 +61,7 @@ class CornersMenu extends HTMLElement {
 				
 				pointer-events: none;
 				position: fixed;
+				z-index:2;
 				
 				--scrolled-scale: .5;
 				--scrolled-rotation: -90deg;
@@ -53,6 +78,27 @@ class CornersMenu extends HTMLElement {
 				text-underline-offset: 6px;
 				text-decoration: none;
 				pointer-events: all;
+				display: flex;
+				flex-direction: column;
+			}
+
+			nav a ul.subs {
+				list-style: none;
+				font-size: calc(var(--font-size));
+				transition: all .2s;
+				padding: 0 5px;
+				margin: 0;
+			}
+
+			nav a li {
+				display: inline;
+			}
+
+			nav a.bottom-right ul.subs li, nav a.top-right ul.subs li {
+				text-align: right;
+			}
+
+			nav a.bottom-left ul.subs, nav a.bottom-right ul.subs {
 			}
 			
 			nav a.active {
@@ -67,9 +113,14 @@ class CornersMenu extends HTMLElement {
 				padding: 0px 15px 0px 15px; 
 				pointer-events: none;
 			}
+
+			nav.scrolled ul.subs {
+				opacity: 0;
+				transform: translateY(-20px);
+			}
 			
 			nav.scrolled a.bottom-left {
-				transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateY(var(--scrolled-translation));
+				transform: scale(var(--scrolled-scale)) rotateZ(calc(var(--scrolled-rotation) * -1)) translateX(calc(var(--scrolled-translation) * -1));
 			}
 			
 			nav.scrolled a.bottom-right {
@@ -81,7 +132,7 @@ class CornersMenu extends HTMLElement {
 			}
 			
 			nav.scrolled a.top-right {
-				transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateY(calc(-1 * var(--scrolled-translation)));
+				transform: scale(var(--scrolled-scale)) rotateZ(calc(var(--scrolled-rotation) * -1)) translateX(calc(var(--scrolled-translation)));
 			}
 			
 			/* Responsive */	
@@ -128,3 +179,4 @@ class CornersMenu extends HTMLElement {
 }
 
 customElements.define('corners-menu', CornersMenu);
+

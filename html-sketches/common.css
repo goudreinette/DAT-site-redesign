@@ -23,9 +23,11 @@ body {
     --hermosa-pink: rgb(249, 192, 205);
     --calamine-blue: rgb(204, 235, 236);
     --seashell-pink: rgb(255, 234, 223);
+    --font-size: 16px;
 
     font-family: Formular;
     line-height: 1.5;
+    font-size: var(--font-size);
 
     margin: 0;
     min-height: 200vh;

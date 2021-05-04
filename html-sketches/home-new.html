@@ -1,7 +1,133 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./elements.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
     <link rel="stylesheet" href="./common.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <corners-menu></corners-menu>
+
+
+<div class="splash">
+
+</div>
+
+<div class="grid">
+    <div class="masonry">
+        <figure>
+            <img data-aos="fade" src="./project-images/image1.jpeg" alt="A windmill" />
+        </figure>
+        <figure>
+            <img data-aos="fade" src="./project-images/image2.jpeg" alt="The Clifton Suspension Bridge" />
+        </figure>
+        <figure>
+            <img data-aos="fade" src="./project-images/image3.png" alt="Sunset and boats" />
+        </figure>
+        <figure>
+            <img data-aos="fade" src="./project-images/image4.png" alt="a river in the snow" />
+        </figure>
+        <figure>
+            <img data-aos="fade" src="./project-images/image5.jpeg" alt="a single checked balloon" />
+        </figure>
+        <figure>
+            <img data-aos="fade" src="./project-images/image6.jpeg" alt="a hot air balloon shaped like a dog" />
+        </figure>
+        <figure>
+            <img data-aos="fade" src="./project-images/image7.jpeg"
+                alt="View from a hot air balloon of other balloons" />
+        </figure>
+        <figure>
+            <img data-aos="fade" src="./project-images/image8.jpeg" alt="a balloon fairground ride" />
+        </figure>
+        <figure>
+            <img data-aos="fade" src="./project-images/image9.png" alt="sunrise over a harbor" />
+        </figure>
+        <figure>
+            <img data-aos="fade" src="./project-images/image10.jpeg" alt="three hot air balloons in a blue sky" />
+        </figure>
+    </div>
+</div>
+
+<script>
+    addEventListener('scroll', updateScroll);
+    const fadeContainer = document.querySelector('.grid')
+
+    function updateScroll() {
+        let docHeight = document.body.offsetHeight;
+        let winHeight = innerHeight;
+        let scrollPercent = scrollY / (docHeight - winHeight);
+
+        let fadeIntro = Math.min(Math.min(scrollPercent, 0.5) * 5 + 0.1, 1);
+
+        fadeContainer.style.opacity = fadeIntro;
+    }
+
+    updateScroll()
+
+    AOS.init()
+</script>
+
+
+
+<style>
+    .splash {
+        width: 100vw;
+        height: 90vh;
+        background: rgb(249, 254, 255);
+        /* border-bottom: 1px solid #ddd; */
+    }
+
+    img {
+        width: 100%;
+        display: block;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(14, 1fr);
+        grid-gap: 20px;
+        width: 100vw;
+    }
+
+
+    figure {
+        margin: 0;
+        display: grid;
+        grid-template-rows: 1fr auto;
+        padding-bottom: 10px;
+        break-inside: avoid;
+    }
+
+    figure>img {
+        grid-row: 1 / -1;
+        grid-column: 1;
+    }
+
+    figure a {
+        color: black;
+        text-decoration: none;
+    }
+
+    figcaption {
+        grid-row: 2;
+        grid-column: 1;
+        background-color: rgba(255, 255, 255, .5);
+        /*   padding: .2em .5em; */
+        justify-self: start;
+    }
+
+    .masonry {
+        column-count: 2;
+        column-gap: 10px;
+        grid-column: 2 / span 12;
+        padding-bottom: 200px;
+    }
+
+    @media (max-width: 700px) {
+        .masonry {
+            column-count: 1;
+        }
+    }
+</style>
