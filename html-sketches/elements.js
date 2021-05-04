@@ -8,9 +8,9 @@ class CornersMenu extends HTMLElement {
 	}
 
 	connectedCallback() {
-		this.innerHTML = `
+		this.innerHTML = html`
 			<nav>
-				<a href="/blob.html" class="top-left" style="transform-origin: top left; top: 0; left: 0;">
+				<a href="/dat.html" class="top-left" style="transform-origin: top left; top: 0; left: 0;">
 					DAT
 				</a>
 				<a href="/who.html" class="top-right" style="transform-origin: top right; top: 0; right: 0;">
@@ -83,10 +83,6 @@ class CornersMenu extends HTMLElement {
 			
 			/* Responsive */	
 			@media (max-width: 500px) {
-				nav {
-					/* --scrolled-scale: .4; */
-				}
-				
 				main {
 					padding: 40px;
 				}

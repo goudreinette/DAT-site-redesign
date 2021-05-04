@@ -1,0 +1,61 @@
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script src="./elements.js"></script>
+	<link rel="stylesheet" href="./common.css">
+</head>
+
+
+<corners-menu></corners-menu>
+
+
+<svg style="width: 100vw; height: 100vh;">
+	<g></g>
+</svg>
+
+
+<script>
+
+
+</script>
+
+
+
+
+<style>
+	@font-face {
+		font-family: 'Formular';
+		src: url('./assets/Formular.ttf');
+	}
+
+	@font-face {
+		font-family: 'Formular';
+		src: url('./assets/Formular-Bold.ttf');
+		font-weight: bold;
+	}
+
+	body {
+		font-family: 'Formular';
+		height: 200vh;
+	}
+
+	svg {
+		pointer-events: none;
+		position: fixed;
+	}
+
+	svg text {
+		position: relative;
+		animation: blob-in 1s;
+	}
+
+
+	@keyframes blob-in {
+		from {
+			transform: scale(0);
+		}
+
+		to {
+			transform: scale(1);
+		}
+	}
+</style>
