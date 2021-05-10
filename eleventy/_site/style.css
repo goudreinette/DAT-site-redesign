@@ -1,0 +1,370 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Formular';
+    src: url('/assets/Formular.ttf');
+}
+
+@font-face {
+    font-family: 'Formular';
+    src: url('/assets/Formular-Bold.ttf');
+    font-weight: bold;
+}
+
+body {
+    /* 
+    --hermosa-pink: rgb(249, 192, 205);
+    --calamine-blue: rgb(120, 205, 209);
+    --seashell-pink: rgb(253, 212, 189); */
+
+    --hermosa-pink: rgb(249, 192, 205);
+    --calamine-blue: rgb(204, 235, 236);
+    --seashell-pink: rgb(255, 234, 223);
+    --accent1: #EF00AC;
+    --accent2: #00FF00;
+    --accent3: #B466FF;
+
+    --font-size: 16px;
+
+    font-family: Formular;
+    line-height: 1.5;
+    font-size: var(--font-size);
+
+    margin: 0;
+    min-height: 150vh;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-underline-offset: 2px;
+}
+
+a:hover {
+    color: var(--accent3);
+}
+
+/**
+ * Nav
+ */
+nav {
+    width: 100%;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+
+    pointer-events: none;
+    position: fixed;
+    z-index: 2;
+
+    --scrolled-scale: .5;
+    --scrolled-rotation: -90deg;
+    --scrolled-translation: 100%;
+}
+
+body:not([data-path="/"]) nav li {
+    display: none;
+}
+
+
+nav a {
+    color: currentcolor;
+    position: absolute;
+    padding: 0px 15px 10px 15px;
+    font-size: 600%;
+    transition: transform .4s;
+    text-underline-offset: 6px;
+    text-decoration: none;
+    pointer-events: all;
+    display: flex;
+    flex-direction: column;
+}
+
+nav a.active {
+    color: var(--accent1);
+}
+
+nav a:hover {
+    color: var(--accent2);
+}
+
+nav.scrolled a {
+    transition-delay: .1s;
+}
+
+nav:not(.scrolled) ul.subs {
+    transition-delay: .4s;
+}
+
+nav a ul.subs {
+    list-style: none;
+    font-size: calc(var(--font-size));
+    transition: transform .2s, opacity .25s;
+    padding: 0 5px;
+    margin: 0;
+}
+
+nav a li {
+    // display: inline;
+}
+
+nav a.bottom-right ul.subs li,
+nav a.top-right ul.subs li {
+    text-align: right;
+}
+
+nav a.bottom-left ul.subs,
+nav a.bottom-right ul.subs {}
+
+nav a.active {
+    /*transform: scale(1);*/
+}
+
+nav a:hover {
+    text-decoration: none;
+}
+
+/*nav a.active {
+    padding: 0px 15px 0px 15px;
+    pointer-events: none;
+}*/
+
+nav.scrolled ul.subs {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+nav.scrolled a.bottom-left {
+    transform: scale(var(--scrolled-scale)) rotateZ(calc(var(--scrolled-rotation) * -1)) translateX(calc(var(--scrolled-translation) * -1));
+}
+
+nav.scrolled a.bottom-right {
+    transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateX(var(--scrolled-translation));
+}
+
+nav.scrolled a.top-left {
+    transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateX(calc(-1 * var(--scrolled-translation)));
+}
+
+nav.scrolled a.top-right {
+    transform: scale(var(--scrolled-scale)) rotateZ(calc(var(--scrolled-rotation) * -1)) translateX(calc(var(--scrolled-translation)));
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    nav a {
+        font-size: 500%;
+    }
+}
+
+@media (max-width: 600px) {
+    nav a {
+        font-size: 400%;
+    }
+}
+
+@media (max-width: 600px) {
+    nav a {
+        font-size: 350%;
+    }
+}
+
+@media (max-width: 500px) {
+    nav a {
+        font-size: 275%;
+    }
+}
+
+
+@media (max-width: 400px) {
+    nav a {
+        font-size: 200%;
+    }
+}
+
+.splash {
+    height: 90vh;
+    background: rgb(249, 254, 255);
+}
+
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+    grid-gap: 20px;
+}
+
+main {
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+}
+
+
+
+/**
+ * Masonry
+ */
+.grid .masonry {
+    grid-column: 2 / span 12;
+}
+
+.masonry {
+    column-count: 2;
+    column-gap: 10px;
+    padding-bottom: 200px;
+}
+
+.masonry .project {
+    display: flex;
+    flex-direction: column;
+}
+
+.masonry * {
+    margin: 0;
+}
+
+.masonry img {
+    width: 100%;
+}
+
+.masonry>div {
+    padding-bottom: 10px;
+}
+
+.masonry>div:hover {
+    opacity: .5;
+}
+
+@media (max-width: 700px) {
+    .masonry {
+        column-count: 1;
+    }
+}
+
+
+/**
+ * Trail
+ */
+.trail {
+    font-family: Formular;
+    /* className for the trail elements */
+    position: absolute;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: bold;
+    mix-blend-mode: hard-light;
+    opacity: 0;
+    transition: opacity 1s;
+    left: 0;
+    top: 0;
+}
+
+.trail span {
+    display: inline-flex;
+    animation: up-down 1s infinite alternate ease-in-out;
+    animation-delay: calc(var(--i) * .1s);
+}
+
+@keyframes up-down {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(30px);
+    }
+}
+
+
+/**
+ * Main
+ */
+.img-placeholder {
+    background: #ddd;
+    height: 200px;
+}
+
+main h2 {
+    grid-column: 3 / 12;
+    margin-bottom: 0;
+}
+
+main p {
+    grid-column: 2 / 8;
+    margin-top: 0;
+}
+
+
+/**
+ * Details
+ */
+details {
+    display: contents;
+}
+
+details summary {
+    grid-column: 3 / 10;
+    font-size: 24;
+    cursor: pointer;
+    text-transform: uppercase;
+    user-select: none;
+    text-decoration: underline;
+    text-decoration-color: #00000079;
+    text-underline-offset: 2px;
+}
+
+details[open] summary {
+    text-decoration: none;
+}
+
+details[open]:nth-child(1) summary {
+    color: var(--accent1);
+}
+
+details[open]:nth-child(2) summary {
+    color: var(--accent2);
+}
+
+details[open]:nth-child(3) summary {
+    color: var(--accent3);
+}
+
+details[open]:nth-child(4) summary {
+    color: var(--accent1);
+}
+
+details[open]:nth-child(5) summary {
+    color: var(--accent2);
+}
+
+details[open]:nth-child(6) summary {
+    color: var(--accent3);
+}
+
+details[open]:nth-child(7) summary {
+    color: var(--accent1);
+}
+
+details[open]:nth-child(8) summary {
+    color: var(--accent2);
+}
+
+details[open]:nth-child(9) summary {
+    color: var(--accent2);
+}
+
+details summary::marker,
+summary::-webkit-details-marker {
+    display: none;
+    content: '';
+}
+
+details .content {
+    grid-column: 4 / 11;
+}
+
+/**
+ * Link
+ */

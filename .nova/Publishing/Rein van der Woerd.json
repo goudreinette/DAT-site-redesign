@@ -1,8 +1,19 @@
 {
   "identifier" : "33BC4B8A-2BF0-49B3-B6D4-FC8854600C6E",
-  "localPath" : ".",
-  "remotePath" : "\/domains\/rein.computer\/public_html\/dat-sketches",
-  "remoteURL" : "\/dat-sketches\/",
+  "ignoredFilePatterns" : [
+    ".gitignore",
+    "html-sketches",
+    "html-sketches\/elements.js",
+    "html-sketches\/home-new.html",
+    "html-sketches\/index.html",
+    "html-sketches\/project-images",
+    "html-sketches\/style-a.css",
+    "html-sketches\/temp.html",
+    "screenshots"
+  ],
+  "localPath" : "eleventy\/_site",
+  "remotePath" : "\/dat-site.rein.computer",
+  "remoteURL" : "\/",
   "server" : "rein.computer",
   "usesPublishing" : true
 }
