@@ -91,7 +91,7 @@ class CornersMenu extends HTMLElement {
 			}
 
 			nav a li {
-				display: inline;
+				// display: inline;
 			}
 
 			nav a.bottom-right ul.subs li, nav a.top-right ul.subs li {

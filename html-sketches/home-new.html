@@ -18,21 +18,17 @@
     <masonry-grid></masonry-grid>
 </div>
 
-<script>
-    addEventListener('scroll', updateScroll);
+<script>    
     const fadeContainer = document.querySelector('.grid')
 
     function updateScroll() {
-        let docHeight = document.body.offsetHeight;
-        let winHeight = innerHeight;
-        let scrollPercent = scrollY / (docHeight - winHeight);
-
+        let scrollPercent = scrollY / (document.body.offsetHeight - innerHeight);
         let fadeIntro = Math.min(Math.min(scrollPercent, 0.5) * 5 + 0.1, 1);
-
         fadeContainer.style.opacity = fadeIntro;
     }
 
-    updateScroll()
+    addEventListener('scroll', updateScroll);
+    addEventListener('load', updateScroll);
 
     AOS.init()
 </script>
