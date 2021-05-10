@@ -15,7 +15,42 @@
 </div>
 
 <div class="grid">
-    <masonry-grid></masonry-grid>
+    <masonry-grid>
+        <div slot="content">
+            <div>
+                <img data-aos="fade" src="./project-images/image1.jpeg" alt="A windmill" />
+            </div>
+            <div>
+                <img data-aos="fade" src="./project-images/image2.jpeg" alt="The Clifton Suspension Bridge" />
+            </div>
+            <div>
+                <img data-aos="fade" src="./project-images/image3.png" alt="Sunset and boats" />
+            </div>
+            <div>
+                <img data-aos="fade" src="./project-images/image4.png" alt="a river in the snow" />
+            </div>
+            <div>
+                <img data-aos="fade" src="./project-images/image5.jpeg" alt="a single checked balloon" />
+            </div>
+            <div>
+                <img data-aos="fade" src="./project-images/image6.jpeg" alt="a hot air balloon shaped like a dog" />
+            </div>
+            <div>
+                <img data-aos="fade" src="./project-images/image7.jpeg"
+                    alt="View from a hot air balloon of other balloons" />
+            </div>
+            <div>
+                <img data-aos="fade" src="./project-images/image8.jpeg" alt="a balloon fairground ride" />
+            </div>
+            <div>
+                <img data-aos="fade" src="./project-images/image9.png" alt="sunrise over a harbor" />
+            </div>
+            <div>
+                <img data-aos="fade" src="./project-images/image10.jpeg" alt="three hot air balloons in a blue sky" />
+            </div>
+        </div>
+
+    </masonry-grid>
 </div>
 
 <script>
@@ -62,5 +97,138 @@
     .grid masonry-grid {
         grid-column: 2 / span 12;
 
+    }
+</style>
+
+
+
+<script>
+    let words = " if this then ...".split(' ')
+    let j = 0;
+    let si = 0
+    // dots is an array of Dot objects,
+    // mouse is an object used to track the X and Y position
+    // of the mouse, set with a mousemove event listener below
+    var dots = [],
+        mouse = {
+            x: innerWidth / 2,
+            y: innerHeight / 2
+        };
+
+    // The Dot object used to scaffold the dots
+    var Dot = function () {
+        this.x = 0;
+        this.y = 0;
+        this.node = (function () {
+
+            var n = document.createElement("div");
+            n.className = "trail";
+
+
+            words[j].split('').forEach((c, _) => {
+                var s = document.createElement('span')
+                s.innerText = c
+                s.style.setProperty('--i', si);
+                si++
+                n.appendChild(s)
+            })
+
+
+            document.body.appendChild(n);
+            j++
+            return n;
+        }());
+    };
+    // The Dot.prototype.draw() method sets the position of 
+    // the object's <div> node
+    Dot.prototype.draw = function () {
+        this.node.style.left = this.x + "px";
+        this.node.style.top = this.y + "px";
+    };
+
+    // Creates the Dot objects, populates the dots array
+    for (var i = 0; i < words.length; i++) {
+        var d = new Dot();
+        dots.push(d);
+    }
+
+    // This is the screen redraw function
+    function draw() {
+        // Make sure the mouse position is set everytime
+        // draw() is called.
+        var x = mouse.x,
+            y = mouse.y;
+
+        // This loop is where all the 90s magic happens
+        dots.forEach(function (dot, index, dots) {
+            var nextDot = dots[index + 1] || dots[0];
+
+            dot.x = x + offsetSoFar(index) * 3 + 50;
+            dot.y = y;
+            dot.draw();
+            x += ((nextDot.x) - dot.x) * .8;
+            y += (nextDot.y - dot.y) * .8;
+
+        });
+    }
+
+
+    function offsetSoFar(index) {
+        let offset = 0;
+
+        for (const word of words.slice(0, index)) {
+            offset += word.length
+        }
+
+        return offset
+    }
+
+    addEventListener("mousemove", function (event) {
+        document.querySelectorAll('.trail').forEach(t => {
+            t.style.opacity = 1
+        })
+        //event.preventDefault();
+        mouse.x = event.pageX;
+        mouse.y = event.pageY;
+    });
+
+    // animate() calls draw() then recursively calls itself
+    // everytime the screen repaints via requestAnimationFrame().
+    function animate() {
+        draw();
+        requestAnimationFrame(animate);
+    }
+
+    // And get it started by calling animate().
+    animate();
+</script>
+
+<style>
+    .trail {
+        font-family: Formular;
+        /* className for the trail elements */
+        position: absolute;
+        border-radius: 3px;
+        text-transform: uppercase;
+        font-weight: bold;
+        mix-blend-mode: hard-light;
+        opacity: 0;
+        transition: opacity 1s;
+    }
+
+    .trail span {
+        display: inline-flex;
+        animation: up-down 1s infinite alternate ease-in-out;
+        animation-delay: calc(var(--i) * .1s);
+    }
+
+    @keyframes up-down {
+        from {
+            transform: translateY(0px);
+        }
+
+        to {
+            transform: translateY(30px);
+        }
     }
 </style>

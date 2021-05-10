@@ -180,6 +180,7 @@ class CornersMenu extends HTMLElement {
 
 customElements.define('corners-menu', CornersMenu);
 
+
 /**
  * 
  */
@@ -187,86 +188,57 @@ class MasonryGrid extends HTMLElement {
 	constructor() {
 		super();
 
-		addEventListener('scroll', () => {
-			this.querySelector('nav').classList.toggle('scrolled', scrollY > 50)
-		})
+		const shadowRoot = this.attachShadow({ mode: 'open' });
+		shadowRoot.innerHTML = html`
+			<div class="masonry">
+				<slot name="content"></slot>
+
+				<style>
+					figure {
+						margin: 0;
+						display: grid;
+						grid-template-rows: 1fr auto;
+						padding-bottom: 10px;
+						break-inside: avoid;
+					}
+
+					figure>img {
+						grid-row: 1 / -1;
+						grid-column: 1;
+					}
+
+					figure a {
+						color: black;
+						text-decoration: none;
+					}
+
+					figcaption {
+						grid-row: 2;
+						grid-column: 1;
+						background-color: rgba(255, 255, 255, .5);
+						/*   padding: .2em .5em; */
+						justify-self: start;
+					}
+
+					.masonry {
+						column-count: 2;
+						column-gap: 10px;
+						padding-bottom: 200px;
+					}
+
+					@media (max-width: 700px) {
+						.masonry {
+							column-count: 1;
+						}
+					}
+				</style>
+			</div>
+		`
 	}
 
 	connectedCallback() {
 		this.innerHTML = html`
-			<div class="masonry">
-				<figure>
-					<img data-aos="fade" src="./project-images/image1.jpeg" alt="A windmill" />
-				</figure>
-				<figure>
-					<img data-aos="fade" src="./project-images/image2.jpeg" alt="The Clifton Suspension Bridge" />
-				</figure>
-				<figure>
-					<img data-aos="fade" src="./project-images/image3.png" alt="Sunset and boats" />
-				</figure>
-				<figure>
-					<img data-aos="fade" src="./project-images/image4.png" alt="a river in the snow" />
-				</figure>
-				<figure>
-					<img data-aos="fade" src="./project-images/image5.jpeg" alt="a single checked balloon" />
-				</figure>
-				<figure>
-					<img data-aos="fade" src="./project-images/image6.jpeg" alt="a hot air balloon shaped like a dog" />
-				</figure>
-				<figure>
-					<img data-aos="fade" src="./project-images/image7.jpeg"
-						alt="View from a hot air balloon of other balloons" />
-				</figure>
-				<figure>
-					<img data-aos="fade" src="./project-images/image8.jpeg" alt="a balloon fairground ride" />
-				</figure>
-				<figure>
-					<img data-aos="fade" src="./project-images/image9.png" alt="sunrise over a harbor" />
-				</figure>
-				<figure>
-					<img data-aos="fade" src="./project-images/image10.jpeg" alt="three hot air balloons in a blue sky" />
-				</figure>
-			</div>
-
-			<style>
-				figure {
-					margin: 0;
-					display: grid;
-					grid-template-rows: 1fr auto;
-					padding-bottom: 10px;
-					break-inside: avoid;
-				}
-
-				figure>img {
-					grid-row: 1 / -1;
-					grid-column: 1;
-				}
-
-				figure a {
-					color: black;
-					text-decoration: none;
-				}
-
-				figcaption {
-					grid-row: 2;
-					grid-column: 1;
-					background-color: rgba(255, 255, 255, .5);
-					/*   padding: .2em .5em; */
-					justify-self: start;
-				}
-
-				.masonry {
-					column-count: 2;
-					column-gap: 10px;
-					padding-bottom: 200px;
-				}
-
-				@media (max-width: 700px) {
-					.masonry {
-						column-count: 1;
-					}
-				}
-			</style>
+			
 		`
 	}
 }
