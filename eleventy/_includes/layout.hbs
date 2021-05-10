@@ -1,18 +1,548 @@
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./style.css">
-	<title>{{ title }}</title>
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+	<title>{{ title }} | Design, Art & Technology</title>
 </head>
 
-<body>
-	{{{ content }}}
+
+<body data-path="{{page.url}}">
+	<nav data-url="">
+		<a href="/" class="top-left" style="transform-origin: top left; top: 0; left: 0;">
+			DAT
+			<ul class="subs">
+				
+			</ul>
+		</a>
+		<a href="/who/" class="top-right" style="transform-origin: top right; top: 0; right: 0;">
+			WHO
+			<ul class="subs">
+				<li>Students</li>
+				<li>Teachers</li>
+				<li>Alumni</li>
+				<li>Contact</li>
+			</ul>
+		</a>
+		<a href="/what/" class="bottom-left" style="transform-origin: bottom left; bottom: 0; left: 0;">
+			<ul class="subs">
+				<li>Behind the net</li>
+				<li>External projects</li>
+				<li>Hackathon</li>
+				<li>Solidarity</li>
+				<li>Transition</li>
+				<li>After graduation</li>
+				<li>Design and Fine Arts</li>
+			</ul>
+			WHAT
+		</a>
+		<a href="/when/" class="bottom-right" style="transform-origin: bottom right; bottom: 0; right: 0;">
+			<ul class="subs">
+				<li>Agenda</li>
+				<li>Exhibitions</li>
+			</ul>
+			WHEN
+		</a>
+	</nav>
+
+
+	{{{content}}}
+
 </body>
 
 
+
+<script>
+	/**
+	 * Nav collapsing
+	 */
+	addEventListener('scroll', () => {
+		document.querySelector('nav').classList.toggle('scrolled', scrollY > 50)
+	})
+
+	/**
+	 * Nav active
+	 */
+	const activeMenuItem = document.querySelector(`a[href="${location.pathname}"]`)
+	activeMenuItem.classList.add('active')
+
+
+	/**
+	 * Trail
+	 */
+	let words = " if this then ...".split(' ')
+    let j = 0;
+    let si = 0
+    // dots is an array of Dot objects,
+    // mouse is an object used to track the X and Y position
+    // of the mouse, set with a mousemove event listener below
+    var dots = [],
+        mouse = {
+            x: innerWidth / 2,
+            y: innerHeight / 2
+        };
+
+    // The Dot object used to scaffold the dots
+    var Dot = function () {
+        this.x = 0;
+        this.y = 0;
+        this.node = (function () {
+
+            var n = document.createElement("div");
+            n.className = "trail";
+
+
+            words[j].split('').forEach((c, _) => {
+                var s = document.createElement('span')
+                s.innerText = c
+                s.style.setProperty('--i', si);
+                si++
+                n.appendChild(s)
+            })
+
+
+            document.body.appendChild(n);
+            j++
+            return n;
+        }());
+    };
+    // The Dot.prototype.draw() method sets the position of 
+    // the object's <div> node
+    Dot.prototype.draw = function () {
+        this.node.style.transform = `translateX(${this.x}px) translateY(${this.y}px)`
+    };
+
+    // Creates the Dot objects, populates the dots array
+    for (var i = 0; i < words.length; i++) {
+        var d = new Dot();
+        dots.push(d);
+    }
+
+    // This is the screen redraw function
+    function draw() {
+        // Make sure the mouse position is set everytime
+        // draw() is called.
+        var x = mouse.x,
+            y = mouse.y;
+
+        // This loop is where all the 90s magic happens
+        dots.forEach(function (dot, index, dots) {
+            var nextDot = dots[index + 1] || dots[0];
+
+            dot.x = x + offsetSoFar(index) * 3 + 50;
+            dot.y = y;
+            dot.draw();
+            x += ((nextDot.x) - dot.x) * .8;
+            y += (nextDot.y - dot.y) * .8;
+
+        });
+    }
+
+
+    function offsetSoFar(index) {
+        let offset = 0;
+
+        for (const word of words.slice(0, index)) {
+            offset += word.length
+        }
+
+        return offset
+    }
+
+    addEventListener("mousemove", function (event) {
+        document.querySelectorAll('.trail').forEach(t => {
+            t.style.opacity = 1
+        })
+        //event.preventDefault();
+        mouse.x = event.pageX;
+        mouse.y = event.pageY;
+    });
+
+    // animate() calls draw() then recursively calls itself
+    // everytime the screen repaints via requestAnimationFrame().
+    function animate() {
+        draw();
+        requestAnimationFrame(animate);
+    }
+
+    // And get it started by calling animate().
+    animate();
+
+
+	/**
+	 * 
+	 */
+	customElements.define('apply-now', class extends HTMLElement {
+		connectedCallback() {
+			this.innerHTML = `
+				<a class="apply-now" target="_blank" href="https://www.artez.nl/en/study-at-artez/application-and-admission/apply">
+					<svg xmlns="http://www.w3.org/2000/svg" width="129.461" height="96.57" viewBox="0 0 129.461 96.57">
+						<g id="apply_now" data-name="apply now" transform="translate(-123.322 -569.34)">
+							<path id="Path_37" data-name="Path 37" d="M28.219,27.727l4.126-10.219,9.358,4.5L47.3,4.835,63.228,17.508,70.892,4.835,73.9,12.629,96.246,0V17.508l19.394,4.5-14.516,10.06,12.611,8.949-9.544,5.843L110.8,60.63l-22.443-1.44,3.695,17.483L76.41,60.63,69.052,81.535,53.618,72.576,43.6,90.642v-19.5l-15.382,10.4-4.557-12.4-20.542,2L14.832,54,3.119,48.567l8-7.547-8-8.949,6.511-1.379L0,23.854Z" transform="translate(132.557 575.392) rotate(-3)" fill="#878cff"/>
+							<text id="APPLY_NOW-2" data-name="APPLY NOW" transform="translate(128.496 637.686) rotate(-13)" font-size="21"><tspan x="0" y="0">APPLY NOW</tspan></text>
+						</g>
+					</svg>
+				</a>
+			`
+		}
+	})
+</script>
+
+
+
 <style>
-  body {
-	background: yellow;
-  }
+	* {
+		box-sizing: border-box;
+	}
+
+	@font-face {
+		font-family: 'Formular';
+		src: url('/assets/Formular.ttf');
+	}
+
+	@font-face {
+		font-family: 'Formular';
+		src: url('/assets/Formular-Bold.ttf');
+		font-weight: bold;
+	}
+
+	body {
+		/* 
+		--hermosa-pink: rgb(249, 192, 205);
+		--calamine-blue: rgb(120, 205, 209);
+		--seashell-pink: rgb(253, 212, 189); */
+
+		--hermosa-pink: rgb(249, 192, 205);
+		--calamine-blue: rgb(204, 235, 236);
+		--seashell-pink: rgb(255, 234, 223);
+		--accent1: #EF00AC;
+		--accent2: #00FF00;
+		--accent3: #B466FF;
+
+		--font-size: 16px;
+
+		font-family: Formular;
+		line-height: 1.5;
+		font-size: var(--font-size);
+
+		margin: 0;
+		min-height: 150vh;
+		overflow-x: hidden;
+	}
+
+	a {
+		color: inherit;
+		text-underline-offset: 2px;
+	}
+
+	a:hover {
+		color: var(--accent3);
+	}
+
+	/**
+	 * Nav
+	 */
+	nav {
+		width: 100%;
+		min-height: 100vh;
+		min-height: -webkit-fill-available;
+
+		pointer-events: none;
+		position: fixed;
+		z-index: 2;
+
+		--scrolled-scale: .5;
+		--scrolled-rotation: -90deg;
+		--scrolled-translation: 100%;
+	}
+
+	body:not([data-path="/"]) nav li {
+		display: none;
+	}
+
+
+	nav a {
+		color: currentcolor;
+		position: absolute;
+		padding: 0px 15px 10px 15px;
+		font-size: 600%;
+		transition: transform .4s;
+		text-underline-offset: 6px;
+		text-decoration: none;
+		pointer-events: all;
+		display: flex;
+		flex-direction: column;
+	}
+
+	nav a.active {
+		color: var(--accent1);
+	}
+
+	nav a:hover {
+		color: var(--accent2);
+	}
+
+	nav.scrolled a {
+		transition-delay: .1s;
+	}
+
+	nav:not(.scrolled) ul.subs {
+		transition-delay: .4s;
+	}
+
+	nav a ul.subs {
+		list-style: none;
+		font-size: calc(var(--font-size));
+		transition: transform .2s, opacity .25s;
+		padding: 0 5px;
+		margin: 0;
+	}
+
+	nav a li {
+		// display: inline;
+	}
+
+	nav a.bottom-right ul.subs li,
+	nav a.top-right ul.subs li {
+		text-align: right;
+	}
+
+	nav a.bottom-left ul.subs,
+	nav a.bottom-right ul.subs {}
+
+	nav a.active {
+		/*transform: scale(1);*/
+	}
+
+	nav a:hover {
+		text-decoration: none;
+	}
+
+	/*nav a.active {
+		padding: 0px 15px 0px 15px;
+		pointer-events: none;
+	}*/
+
+	nav.scrolled ul.subs {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+
+	nav.scrolled a.bottom-left {
+		transform: scale(var(--scrolled-scale)) rotateZ(calc(var(--scrolled-rotation) * -1)) translateX(calc(var(--scrolled-translation) * -1));
+	}
+
+	nav.scrolled a.bottom-right {
+		transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateX(var(--scrolled-translation));
+	}
+
+	nav.scrolled a.top-left {
+		transform: scale(var(--scrolled-scale)) rotateZ(var(--scrolled-rotation)) translateX(calc(-1 * var(--scrolled-translation)));
+	}
+
+	nav.scrolled a.top-right {
+		transform: scale(var(--scrolled-scale)) rotateZ(calc(var(--scrolled-rotation) * -1)) translateX(calc(var(--scrolled-translation)));
+	}
+
+	/* Responsive */
+	@media (max-width: 700px) {
+		nav a {
+			font-size: 500%;
+		}
+	}
+
+	@media (max-width: 600px) {
+		nav a {
+			font-size: 400%;
+		}
+	}
+
+	@media (max-width: 600px) {
+		nav a {
+			font-size: 350%;
+		}
+	}
+
+	@media (max-width: 500px) {
+		nav a {
+			font-size: 275%;
+		}
+	}
+
+
+	@media (max-width: 400px) {
+		nav a {
+			font-size: 200%;
+		}
+	}
+
+	.splash {
+		height: 90vh;
+		background: rgb(249, 254, 255);
+	}
+
+	
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(14, 1fr);
+		grid-gap: 20px;
+	}
+
+	main {
+        padding-top: 20vh;
+		padding-bottom: 20vh;
+    }
+	
+
+
+	/**
+	 * Masonry
+	 */
+	.grid .masonry {
+		grid-column: 2 / span 12;
+	}
+
+	.masonry {
+		column-count: 2;
+		column-gap: 10px;
+		padding-bottom: 200px;
+	}
+
+	.masonry img {
+		width: 100%;
+	}
+
+	.masonry > div {
+		padding-bottom: 10px;	
+	}
+
+	.masonry > div:hover {
+		opacity: .5;
+	}
+
+	@media (max-width: 700px) {
+		.masonry {
+			column-count: 1;
+		}
+	}	
+
+
+	/**
+	 * Trail
+	 */ 
+	.trail {
+        font-family: Formular;
+        /* className for the trail elements */
+        position: absolute;
+        border-radius: 3px;
+        text-transform: uppercase;
+        font-weight: bold;
+        mix-blend-mode: hard-light;
+        opacity: 0;
+        transition: opacity 1s;
+		left: 0;
+		top: 0;
+    }
+
+    .trail span {
+        display: inline-flex;
+        animation: up-down 1s infinite alternate ease-in-out;
+        animation-delay: calc(var(--i) * .1s);
+    }
+
+    @keyframes up-down {
+        from {
+            transform: translateY(0px);
+        }
+
+        to {
+            transform: translateY(30px);
+        }
+    }
+
+
+	/**
+	 * Main
+	 */
+	.img-placeholder {
+        background: #ddd;
+        height: 200px;
+    }
+
+    main h2 {
+        grid-column: 3 / 12;
+        margin-bottom: 0;
+    }
+
+    main p {
+        grid-column: 2 / 8;
+        margin-top: 0;
+    }
+
+
+	/**
+	 * Details
+	 */
+    details {
+        display: contents;
+    }
+
+    details summary {
+        grid-column: 3 / 10;
+        font-size: 24;
+        cursor: pointer;
+        text-transform: uppercase;
+        user-select: none;
+        text-decoration: underline;
+        text-decoration-color: #00000079;
+        text-underline-offset: 2px;
+    }
+
+    details[open] summary {
+        text-decoration: none;
+    }
+
+	details[open]:nth-child(1) summary {
+		color: var(--accent1);
+    }
+	details[open]:nth-child(2) summary {
+		color: var(--accent2);
+    }
+	details[open]:nth-child(3) summary {
+		color: var(--accent3);
+    }
+	details[open]:nth-child(4) summary {
+		color: var(--accent1);
+    }
+	details[open]:nth-child(5) summary {
+		color: var(--accent2);
+    }
+	details[open]:nth-child(6) summary {
+		color: var(--accent3);
+    }
+	details[open]:nth-child(7) summary {
+		color: var(--accent1);
+    }
+	details[open]:nth-child(8) summary {
+		color: var(--accent2);
+    }
+	details[open]:nth-child(9) summary {
+		color: var(--accent2);
+    }
+
+    details summary::marker {
+        display: none;
+        content: '';
+    }
+
+    details .content {
+        grid-column: 4 / 11;
+    }
+
+	/**
+	 * Link
+	 */
+	
 </style>
