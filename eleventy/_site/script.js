@@ -1,8 +1,8 @@
 /**
-     * Nav collapsing
-     */
+ * Nav collapsing
+ */
 addEventListener('scroll', () => {
-    document.querySelector('nav').classList.toggle('scrolled', scrollY > 50)
+    document.querySelector('nav').classList.toggle('scrolled', scrollY > 10)
 })
 
 /**
